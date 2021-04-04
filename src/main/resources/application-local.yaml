@@ -1,7 +1,9 @@
+service_port: 1001
+
 spring:  
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://169.56.84.35:30001/msadb?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://169.56.84.35:30003/msadb?useUnicode=true&characterEncoding=utf-8
     username: msa
     password: "passw0rd"
     sql-script-encoding: utf-8

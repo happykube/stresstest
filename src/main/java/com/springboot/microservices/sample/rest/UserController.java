@@ -131,6 +131,7 @@ public class UserController {
 		log.info("Added User object in list");
 
 		for(User sampleUser : list) {
+			//log.info(">>>"+sampleUser.getUserNm());
 			sampleUserDao.insertUser(sampleUser);
 		}
 
