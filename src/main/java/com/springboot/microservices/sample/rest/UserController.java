@@ -2,6 +2,8 @@ package com.springboot.microservices.sample.rest;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,15 +21,15 @@ import com.springboot.microservices.sample.model.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Api(value="User API")
 @RestController
 public class UserController {
+	private final Logger log = LoggerFactory.getLogger(getClass());
+	
 	@Autowired
 	private UserDao sampleUserDao;
-		
+	
 	@GetMapping("/users")	
 	@ApiOperation(value="사용자 정보 가져오기", notes="사용자 정보를 제공합니다. ")
 	public ResponseEntity <List<User>> getUserList() { 
@@ -101,5 +103,30 @@ public class UserController {
 		
 		return new ResponseEntity<String> (re+"", HttpStatus.OK);
 	}
+
+	@GetMapping("/createtestusers/{userCount}")
+	@ApiOperation(value="테스트 사용자를 userCount명 등록하기 ")
+	public ResponseEntity <String > createTestUsers(
+			@PathVariable (name="userCount", required = true) int userCount
+		) throws Exception { 
 		
+		log.info("***** Start creating Test users "+userCount+"명");
+		
+		for(int i=0; i < userCount; i++) {
+			User sampleUser = User.builder()
+					.userId("user"+String.format("%05d", i))
+					.userNm("유저"+String.format("%05d", i))
+					.addr("")
+					.cellPhone(String.format("%05d", i))
+					.birthDt(String.format("%05d", i))
+					.agreeInfo("")
+					.build();
+				
+			sampleUserDao.insertUser(sampleUser);
+		}
+		
+		log.info("***** End creating Test users "+userCount+"명");
+		
+		return new ResponseEntity<String> ("1", HttpStatus.OK);
+	}	
 }

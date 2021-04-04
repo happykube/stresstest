@@ -1,8 +1,12 @@
 package com.springboot.microservices.sample.model;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 
 @Data
+@Getter
+@Builder
 public class User {
 	 private String  userId 		; // 사용자 아이
 	 private String  userNm 		; // 사용자 이름 
