@@ -113,7 +113,7 @@ public class UserController {
 		
 		log.info("***** Start creating Test users "+userCount+"명");
 		
-		for(int i=0; i < userCount; i++) {
+		for(int i=0; i < userCount-startUserId; i++) {
 			User sampleUser = User.builder()
 					.userId("user"+String.format("%05d", startUserId+i))
 					.userNm("유저"+String.format("%05d", startUserId+i))
