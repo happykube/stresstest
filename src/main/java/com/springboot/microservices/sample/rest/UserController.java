@@ -125,7 +125,7 @@ public class UserController {
 					.birthDt(String.format("%05d", startUserId+i))
 					.agreeInfo("")
 					.build();
-
+			
 			list.add(sampleUser);
 		}
 		log.info("Added User object in list");
