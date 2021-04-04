@@ -1,5 +1,6 @@
 package com.springboot.microservices.sample.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -112,7 +113,8 @@ public class UserController {
 		) throws Exception { 
 		
 		log.info("***** Start creating Test users "+userCount+"명");
-		List<User> list = null;
+		
+		ArrayList<User> list = new ArrayList<User>();
 
 		for(int i=0; i < userCount-startUserId + 1; i++) {
 			User sampleUser = User.builder()
@@ -123,9 +125,11 @@ public class UserController {
 					.birthDt(String.format("%05d", startUserId+i))
 					.agreeInfo("")
 					.build();
+
 			list.add(sampleUser);
 		}
-		
+		log.info("Added User object in list");
+
 		for(User sampleUser : list) {
 			sampleUserDao.insertUser(sampleUser);
 		}
