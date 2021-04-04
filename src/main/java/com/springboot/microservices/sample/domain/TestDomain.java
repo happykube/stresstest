@@ -19,22 +19,23 @@ public class TestDomain {
 	@Autowired
 	private UserDao sampleUserDao;
 	
-	public ResponseEntity <String > createTestUsers(int startUserId, int userCount) throws Exception { 
+	public ResponseEntity <String> createTestUsers(int startUserId, int userCount) throws Exception { 
 		log.info("***** Start creating Test users "+userCount+"명");
 		
 		ArrayList<User> list = new ArrayList<User>();
-
+		User user = null;
+		
 		for(int i=0; i < userCount-startUserId + 1; i++) {
-			User sampleUser = User.builder()
-					.userId("user"+String.format("%08d", startUserId+i))
-					.userNm("유저"+String.format("%08d", startUserId+i))
-					.addr("")
-					.cellPhone(String.format("%08d", startUserId+i))
-					.birthDt(String.format("%08d", startUserId+i))
-					.agreeInfo("")
-					.build();
+			user = new User();
 			
-			list.add(sampleUser);
+			user.setUserId("user"+String.format("%08d", startUserId+i));
+			user.setUserNm("유저"+String.format("%08d", startUserId+i));
+			user.setAddr("");
+			user.setCellPhone(String.format("%08d", startUserId+i));
+			user.setBirthDt(String.format("%08d", startUserId+i));
+			user.setAgreeInfo("");
+			
+			list.add(user);
 		}
 		log.info("Added User object in list==>"+list.size());
 		

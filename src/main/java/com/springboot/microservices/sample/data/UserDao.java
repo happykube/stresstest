@@ -12,7 +12,6 @@ import org.apache.ibatis.annotations.Mapper;
 import com.springboot.microservices.sample.model.UpdateUser;
 import com.springboot.microservices.sample.model.User;
 
-
 @Mapper
 public interface UserDao {
 

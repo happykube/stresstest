@@ -61,7 +61,7 @@ public class UserDomain {
 	 */
 	public ResponseEntity <String > setUserUpdate(String userId, UpdateUser sampleUser) throws Exception { 
 		log.info("Start db update==>"+userId);
-		sampleUser.setUserId(userId);
+
 		int re  = sampleUserDao.updateUser(sampleUser);
 		log.debug("result :"+ re);
 		
