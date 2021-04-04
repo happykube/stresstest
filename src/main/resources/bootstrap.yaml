@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: mvp-sample-springboot
+    name: stresstest
   profiles:
     active: ${profile:local}
     include: common 

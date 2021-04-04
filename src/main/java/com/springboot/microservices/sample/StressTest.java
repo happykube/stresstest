@@ -5,11 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
-@EnableDiscoveryClient
-public class MvpSampleSpringbootApplication {
+public class StressTestApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MvpSampleSpringbootApplication.class, args);
+		SpringApplication.run(StressTestApplication.class, args);
 	}
 
 }
