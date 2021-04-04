@@ -1,5 +1,6 @@
 package com.springboot.microservices.sample.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -50,6 +51,13 @@ public interface UserDao {
 	 */
 	int deleteUser(String userId) throws Exception;		
 	
+	/**
+	 * 테스트 사용자 등록하기 
+	 * @param ArrayList<User> users
+	 * @return
+	 * @throws Exception
+	 */
+	int createTestUsers(ArrayList<User> users) throws Exception;	
 
 }
 			

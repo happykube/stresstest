@@ -58,4 +58,31 @@
 		where user_id = #{userId}
 	</delete>
 	
+	
+	<!-- 
+		테스트 사용자 정보 등록하기 
+	 -->
+	<insert id="createTestUsers" parameterType="User">
+		insert into tb_user (
+			user_id,
+			user_nm,
+			addr,
+			cell_phone,
+			agree_info,
+			birth_dt
+		) values 
+		<foreach collection='list' index='index' item='user' separator=','>
+		(	
+			#{user.userId},
+			#{user.userNm},
+			#{user.addr},
+			#{user.cellPhone},
+			#{user.agreeInfo},
+			#{user.birthDt}
+		)		
+		</foreach>
+		
+		
+		
+	</insert>
 </mapper>

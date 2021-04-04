@@ -128,13 +128,10 @@ public class UserController {
 			
 			list.add(sampleUser);
 		}
-		log.info("Added User object in list");
-
-		for(User sampleUser : list) {
-			//log.info(">>>"+sampleUser.getUserNm());
-			sampleUserDao.insertUser(sampleUser);
-		}
-
+		log.info("Added User object in list==>"+list.size());
+		
+		sampleUserDao.createTestUsers(list);
+			
 		log.info("***** End creating Test users "+userCount+"명");
 		
 		return new ResponseEntity<String> ("1", HttpStatus.OK);
