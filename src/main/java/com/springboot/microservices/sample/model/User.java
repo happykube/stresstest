@@ -14,5 +14,4 @@ public class User {
 	 private String  cellPhone 	    ; // 핸드폰 
 	 private String  agreeInfo      ; // 고객정보 동의 여부 
 	 private String  birthDt 	    ; // 생년 월일 
-
 }

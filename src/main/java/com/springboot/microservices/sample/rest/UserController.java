@@ -112,7 +112,8 @@ public class UserController {
 		) throws Exception { 
 		
 		log.info("***** Start creating Test users "+userCount+"명");
-		
+		List<User> list = null;
+
 		for(int i=0; i < userCount-startUserId + 1; i++) {
 			User sampleUser = User.builder()
 					.userId("user"+String.format("%05d", startUserId+i))
@@ -122,11 +123,13 @@ public class UserController {
 					.birthDt(String.format("%05d", startUserId+i))
 					.agreeInfo("")
 					.build();
-			
-			Thread.sleep(100);
-			sampleUserDao.insertUser(sampleUser);
+			list.add(sampleUser);
 		}
 		
+		for(User sampleUser : list) {
+			sampleUserDao.insertUser(sampleUser);
+		}
+
 		log.info("***** End creating Test users "+userCount+"명");
 		
 		return new ResponseEntity<String> ("1", HttpStatus.OK);
