@@ -122,7 +122,8 @@ public class UserController {
 					.birthDt(String.format("%05d", startUserId+i))
 					.agreeInfo("")
 					.build();
-				
+			
+			Thread.sleep(100);
 			sampleUserDao.insertUser(sampleUser);
 		}
 		
