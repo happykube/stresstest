@@ -1,4 +1,4 @@
-package com.springboot.microservices.sample.dao;
+package com.springboot.microservices.sample.data;
 
 /*
  * Data(Persistent) Layer: UserDao

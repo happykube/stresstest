@@ -8,11 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-/*
- * Domain(Business) Layer: TestDomain
- */
-
-import com.springboot.microservices.sample.dao.UserDao;
+import com.springboot.microservices.sample.data.UserDao;
 import com.springboot.microservices.sample.model.User;
 
 public class TestDomain {
