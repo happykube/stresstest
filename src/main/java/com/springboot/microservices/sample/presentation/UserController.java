@@ -1,4 +1,4 @@
-package com.springboot.microservices.sample.rest;
+package com.springboot.microservices.sample.presentation;
 
 /*
  * Presentation Layer: UserController
