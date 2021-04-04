@@ -1,5 +1,9 @@
 package com.springboot.microservices.sample.dao;
 
+/*
+ * Data(Persistent) Layer: UserDao
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 
