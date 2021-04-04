@@ -104,9 +104,10 @@ public class UserController {
 		return new ResponseEntity<String> (re+"", HttpStatus.OK);
 	}
 
-	@GetMapping("/createtestusers/{userCount}")
+	@GetMapping("/createtestusers/{startUserId}/{userCount}")
 	@ApiOperation(value="테스트 사용자를 userCount명 등록하기 ")
 	public ResponseEntity <String > createTestUsers(
+			@PathVariable (name="startUserId", required = true) int startUserId,
 			@PathVariable (name="userCount", required = true) int userCount
 		) throws Exception { 
 		
@@ -114,11 +115,11 @@ public class UserController {
 		
 		for(int i=0; i < userCount; i++) {
 			User sampleUser = User.builder()
-					.userId("user"+String.format("%05d", i))
-					.userNm("유저"+String.format("%05d", i))
+					.userId("user"+String.format("%05d", startUserId+i))
+					.userNm("유저"+String.format("%05d", startUserId+i))
 					.addr("")
-					.cellPhone(String.format("%05d", i))
-					.birthDt(String.format("%05d", i))
+					.cellPhone(String.format("%05d", startUserId+i))
+					.birthDt(String.format("%05d", startUserId+i))
 					.agreeInfo("")
 					.build();
 				
