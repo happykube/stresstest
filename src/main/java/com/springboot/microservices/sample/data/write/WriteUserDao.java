@@ -1,37 +1,17 @@
-package com.springboot.microservices.sample.data;
+package com.springboot.microservices.sample.data.write;
 
 /*
  * Data(Persistent) Layer: UserDao
  */
 
 import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
 
 import com.springboot.microservices.sample.model.UpdateUser;
 import com.springboot.microservices.sample.model.User;
 
-@Mapper
-public interface UserDao {
-
+public interface WriteUserDao {
 	/**
-	 * 사용자 전체 정보 가져오기 
-	 * @return
-	 * @throws Exception
-	 */
-	List<User> selectUser() throws Exception;	
-	
-	/**
-	 * 아이디로 사용자 정보 조회하
-	 * @param userId
-	 * @return
-	 * @throws Exception
-	 */
-	User selectUserById(String userId) throws Exception;	
-	
-	/**
-	 * 사용자 정보 변경하
+	 * 사용자 정보 변경
 	 * @param sampleUser
 	 * @return
 	 * @throws Exception

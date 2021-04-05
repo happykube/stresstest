@@ -13,7 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.springboot.microservices.sample.data.UserDao;
+import com.springboot.microservices.sample.data.read.ReadUserDao;
+import com.springboot.microservices.sample.data.write.WriteUserDao;
 import com.springboot.microservices.sample.model.UpdateUser;
 import com.springboot.microservices.sample.model.User;
 
@@ -22,7 +23,10 @@ public class UserDomain {
 	private final Logger log = LoggerFactory.getLogger(getClass());
 	
 	@Autowired
-	private UserDao sampleUserDao;
+	private ReadUserDao readUserDao;
+	
+	@Autowired
+	private WriteUserDao writeUserDao;
 	
 	/*
 	 * getUserList: 유저 목록을 100개까지 리턴
@@ -32,7 +36,7 @@ public class UserDomain {
 		List<User> list = null;
 		try {
 			log.info("Start db select");
-			list = sampleUserDao.selectUser();
+			list = readUserDao.selectUser();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -48,7 +52,7 @@ public class UserDomain {
 		User re = null;
 		try {
 			log.info("Start db select");
-			re = sampleUserDao.selectUserById(userId);
+			re = readUserDao.selectUserById(userId);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -62,7 +66,7 @@ public class UserDomain {
 	public ResponseEntity <String > setUserUpdate(String userId, UpdateUser sampleUser) throws Exception { 
 		log.info("Start db update==>"+userId);
 
-		int re  = sampleUserDao.updateUser(sampleUser);
+		int re  = writeUserDao.updateUser(sampleUser);
 		log.debug("result :"+ re);
 		
 		return new ResponseEntity<String> (re+"", HttpStatus.OK);
@@ -73,7 +77,7 @@ public class UserDomain {
 	 */
 	public ResponseEntity <String > setUserInsert(User sampleUser) throws Exception { 
 		log.info("Start db insert");
-		int re  = sampleUserDao.insertUser(sampleUser);
+		int re  = writeUserDao.insertUser(sampleUser);
 		log.debug("result :"+ re);
 		
 		return new ResponseEntity<String> (re+"", HttpStatus.OK);
@@ -84,7 +88,7 @@ public class UserDomain {
 	 */
 	public ResponseEntity <String > setUserDelete(String userId) throws Exception { 
 		log.info("Start db insert");
-		int re  = sampleUserDao.deleteUser(userId);
+		int re  = writeUserDao.deleteUser(userId);
 		log.debug("result :"+ re);
 		
 		return new ResponseEntity<String> (re+"", HttpStatus.OK);

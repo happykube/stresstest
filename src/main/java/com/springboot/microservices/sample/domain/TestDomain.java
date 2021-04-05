@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.springboot.microservices.sample.data.UserDao;
+import com.springboot.microservices.sample.data.write.WriteUserDao;
 import com.springboot.microservices.sample.model.User;
 
 @Service
@@ -17,7 +17,7 @@ public class TestDomain {
 	private final Logger log = LoggerFactory.getLogger(getClass());
 	
 	@Autowired
-	private UserDao sampleUserDao;
+	private WriteUserDao writeUserDao;
 	
 	public ResponseEntity <String> createTestUsers(int startUserId, int userCount) throws Exception { 
 		log.info("***** Start creating Test users "+userCount+"명");
@@ -39,7 +39,7 @@ public class TestDomain {
 		}
 		log.info("Added User object in list==>"+list.size());
 		
-		sampleUserDao.createTestUsers(list);
+		writeUserDao.createTestUsers(list);
 			
 		log.info("***** End creating Test users "+userCount+"명");
 		
