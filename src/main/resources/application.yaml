@@ -1,14 +1,14 @@
 spring:  
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://${dbhost:169.56.84.35}:${dbport:30003}/msadb?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://${dbhost:169.56.84.35}:${dbport:30004}/msadb?useUnicode=true&characterEncoding=utf-8
     username: ${dbuser:msa}
     password: ${dbpassword:passw0rd}
     sql-script-encoding: utf-8
     hikari:
       connection-timeout: 5000
       validation-timeout: 1000
-      maximum-pool-size: 200
+      maximum-pool-size: 300
       minimum-idle: 2
       connection-test-query: SELECT 1
     
