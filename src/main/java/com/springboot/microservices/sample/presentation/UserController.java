@@ -1,12 +1,18 @@
 package com.springboot.microservices.sample.presentation;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /*
  * Presentation Layer: UserController
  */
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,7 +39,25 @@ public class UserController {
 	@GetMapping("/users")	
 	@ApiOperation(value="사용자 정보 가져오기", notes="사용자 정보를 제공합니다. ")
 	public ResponseEntity <List<User>> getUserList() { 
-		return userService.getUserList();
+		HashMap<Integer,User> userList = new HashMap<>();
+		
+		User user = new User();
+		user.setUserId("user01");
+		user.setUserNm("홍길동");
+		userList.put(0, user);
+
+		user.setUserId("user02");
+		user.setUserNm("홍길동2");
+		userList.put(1, user);
+		
+		List<User> lists = userList
+				.values()
+				.stream()
+				.collect(Collectors.toCollection(ArrayList::new));
+		
+		return new ResponseEntity<List<User>> (lists, HttpStatus.OK);
+		
+		//return userService.getUserList();
 	}
 	
 	
