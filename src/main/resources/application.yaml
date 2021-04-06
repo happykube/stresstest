@@ -1,6 +1,6 @@
 server.tomcat:
   accept-count: 100
-  max-threads: 500
+  max-threads: 5000
   min-spare-threads: 10
 
 spring:  
@@ -28,7 +28,7 @@ spring:
       hikari:
         connection-timeout: 5000
         validation-timeout: 1000
-        maximum-pool-size: 510
+        maximum-pool-size: 5100
         minimum-idle: 2
         connection-test-query: SELECT 1
             
