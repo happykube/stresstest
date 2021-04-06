@@ -1,3 +1,8 @@
+server.tomcat:
+  accept-count: 10
+  max-threads: 50
+  min-spare-threads: 10
+
 spring:  
   write: 
     datasource:
@@ -9,7 +14,7 @@ spring:
       hikari:
         connection-timeout: 5000
         validation-timeout: 1000
-        maximum-pool-size: 100
+        maximum-pool-size: 51
         minimum-idle: 2
         connection-test-query: SELECT 1
 
@@ -23,7 +28,7 @@ spring:
       hikari:
         connection-timeout: 5000
         validation-timeout: 1000
-        maximum-pool-size: 300
+        maximum-pool-size: 51
         minimum-idle: 2
         connection-test-query: SELECT 1
             
