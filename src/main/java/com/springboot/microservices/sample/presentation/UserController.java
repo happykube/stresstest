@@ -39,6 +39,7 @@ public class UserController {
 	@GetMapping("/users")	
 	@ApiOperation(value="사용자 정보 가져오기", notes="사용자 정보를 제공합니다. ")
 	public ResponseEntity <List<User>> getUserList() { 
+		/*
 		HashMap<Integer,User> userList = new HashMap<>();
 		
 		User user = new User();
@@ -56,8 +57,8 @@ public class UserController {
 				.collect(Collectors.toCollection(ArrayList::new));
 		
 		return new ResponseEntity<List<User>> (lists, HttpStatus.OK);
-		
-		//return userService.getUserList();
+		*/
+		return userService.getUserList();
 	}
 	
 	
